@@ -9,7 +9,6 @@ exports.up = function (knex, Promise) {
         players.string('height');
         players.string('handed');
         players.boolean('retired');
-        players.boolean('retired');
     });
 };
 
