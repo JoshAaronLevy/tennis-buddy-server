@@ -6,7 +6,7 @@
 	"scripts": {
 		"start": "nodemon app.js",
 		"build:db": "knex migrate:rollback && knex migrate:latest && knex seed:run",
-		"update:heroku": "heroku knex migrate:rollback && heroku knex migrate:latest && heroku knex seed:run",
+		"update:heroku": "heroku run knex migrate:rollback && heroku run knex migrate:latest && heroku run knex seed:run",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"keywords": [],
