@@ -2,16 +2,18 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
-const port = parseInt(process.env.PORT || 3000);
+const port = parseInt(process.env.PORT || 8080);
 
 const players = require('./routes/players');
 const tournaments = require('./routes/tournaments');
+const matches = require('./routes/matches');
 
 app.use(bodyParser.json());
 app.use(cors());
 
 app.use('/players', players);
 app.use('/tournaments', tournaments);
+app.use('/matches', matches);
 
 app.use((req, res, next) => {
 	const err = new Error('Not Found');

@@ -16,57 +16,57 @@ router.put('/:id', update)
 router.delete('/:id', remove)
 
 function getAll(req, res, next) {
-  knex('players')
+  knex('matches')
     .select('*')
-    .then(players => res.status(200).send({
-      players: players
+    .then(matches => res.status(200).send({
+      matches: matches
     }))
     .catch(next)
 }
 
 function getOne(req, res, next) {
-  knex('players')
+  knex('matches')
     .select('*')
     .limit(1)
     .where({
       slug: req.params.slug
     })
-    .then(([player]) => {
-      if (!player) return res.status(404).send({
+    .then(([match]) => {
+      if (!match) return res.status(404).send({
         message: 'Item not found.'
       })
       res.status(200).send({
-        player: player
+        match: match
       })
     })
     .catch(next)
 }
 
 function create(req, res, next) {
-  knex('players')
+  knex('matches')
     .insert(req.body)
     .then(() => res.status(201).json({
-      player: req.body
+      match: req.body
     }))
     .catch(next)
 }
 
 function update(req, res, next) {
-  knex('players')
+  knex('matches')
     .where({
       id: req.params.id
     })
     .update(req.body)
     .then(count => count >= 1 ?
       res.status(200).json({
-        player: req.body
+        match: req.body
       }) :
       res.status(410).json())
     .catch(next)
 }
 
 function remove(req, res, next) {
-  knex('players')
+  knex('matches')
     .where({
       id: req.params.id
     })
@@ -74,7 +74,7 @@ function remove(req, res, next) {
     .then(count => count >= 1 ?
       res.status(204).json() :
       res.status(404).json({
-        message: 'Unable to delete player!'
+        message: 'Unable to delete match!'
       }))
     .catch(next)
 }

@@ -3,8 +3,13 @@ exports.up = function (knex, Promise) {
         players.increments();
         players.string('first_name');
         players.string('last_name');
+        players.string('gender');
         players.string('nationality');
         players.date('birthdate');
+        players.string('height');
+        players.string('handed');
+        players.boolean('retired');
+        players.boolean('retired');
     });
 };
 
